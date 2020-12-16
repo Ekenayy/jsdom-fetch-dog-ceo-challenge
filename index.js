@@ -50,6 +50,7 @@ let renderBreed = (data) => {
         li.addEventListener('click', (element) => {
             toggleColor(element)
         })
+        li.classList.add('breedName')
         ul.append(li)
     })
 
@@ -69,8 +70,42 @@ window.addEventListener('load', fetch(breedUrl)
        })
 )
 
+let breedDropDown = document.querySelector('#breed-dropdown')
 
+breedDropDown.addEventListener('change', (evt) => {
+    // console.log(evt.target) 
+    // console.log('event triggered')
+    // evt.target.reset()
 
+    let dropDownChoice = evt.target.value 
+    let allBreeds = Array.from(document.querySelectorAll('.breedName'))
+    // let breedNames = allBreeds.forEach(item => item.textContent)
+    // debugger
+
+    let filterBreeds = (arrayOfBreeds) => arrayOfBreeds.filter(breed => {
+        return breed.textContent.charAt(0) !== dropDownChoice
+        // debugger
+        })
+
+   const filteredOutBreeds = filterBreeds(allBreeds)
+//    allBreeds.filter(breed =>  {
+//     breed.textContent.charAt(0) !== dropDownChoice
+//     })
+    
+    // debugger
+   filteredOutBreeds.forEach(item => item.style.display = "none")
+//    debugger 
+    // if (dropDownChoice === 
+    // debugger
+})
+
+const clearButton = document.createElement('button')
+clearButton.value
+breedDropDown.addEventListener('click', (evt) => {
+    let allBreeds = Array.from(document.querySelectorAll('.breedName'))
+
+    allBreeds.forEach(item => item.style.display = "")
+})
 
 
 // function getBreed(url) {
